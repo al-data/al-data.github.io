@@ -1,0 +1,16 @@
+﻿.table-enemies {
+    width:1200px;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding:15px;
+}
+
+table .th-sm {
+    min-width: 75px;
+}
+
+table.table td {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}

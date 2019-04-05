@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=1000, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/js/mdb.min.js" defer></script>
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+    <script type="text/javascript" src="js/alen.min.js"></script>
+
+    <link href="css/index.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+
+    </script>
+</head>
+<body>
+    <!-- About the fixed gun modal -->
+    <div class="modal fade" id="modalPrio" tabindex="-1" role="dialog" aria-labelledby="prioModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="prioModalTitle">About priority</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:25px;">
+                    <p>
+                        The game uses this value to define targeting priorities. The enemy with the highest priority value will be chosen as a target. <b>This only applies to attacks and skills that apply such targeting scheme.</b>
+                    </p>
+
+                    <p>Players commonly refer to said targeting as 'targeting elites' or 'targeting humanoids'. However, repair and commander ships in chapter 13 have higher priority than even bosses.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-enemies">
+        <div>
+            <select id="dropMapType" class="browser-default custom-select scrollable" style="width:150px; margin-right:20px;"></select>
+            <select id="dropChapter" class="browser-default custom-select scrollable" style="width:150px;"></select> - 
+            <select id="dropSubChapter" class="browser-default custom-select scrollable" style="width:150px;"></select>
+            <button id="btnSearch" type="button" class="btn btn-primary" style="height:35px; padding-top:8px;">Search</button>
+        </div>
+
+        <table id="dtBasicExample" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dtBasicExample_info" style="width: 100%;">
+            <thead>
+                <tr role="row">
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        Icon
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        Name
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/hp.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/armor.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/fp.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/torp.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/air.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/aa.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/eva.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        Hit
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        Luck
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">
+                        Notes
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                
+            </tfoot>
+        </table>    
+        
+    </div>
+    <div style="padding-left:15px; font-size:11pt;">
+        Found something wrong? Contact me at Samu#1741. Thank you
+    </div>
+</body>
+</html>
