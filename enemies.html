@@ -67,56 +67,67 @@
             <select id="dropSubChapter" class="browser-default custom-select scrollable" style="width:150px;"></select>
             <button id="btnSearch" type="button" class="btn btn-primary" style="height:35px; padding-top:8px;">Search</button>
         </div>
+            <table id="dtBasicExample" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dtBasicExample_info" style="width: 100%;">
+                <thead>
+                    <tr role="row">
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            Icon
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            Name
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            <img src="img/attr/hp.png" style="width:30px;" />
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            <img src="img/attr/armor.png" style="width:30px;" />
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            <img src="img/attr/fp.png" style="width:30px;" />
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            <img src="img/attr/torp.png" style="width:30px;" />
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            <img src="img/attr/air.png" style="width:30px;" />
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            <img src="img/attr/aa.png" style="width:30px;" />
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            <img src="img/attr/eva.png" style="width:30px;" />
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            Hit
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                            Luck
+                        </th>
+                        <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">
+                            Notes
+                        </th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
 
-        <table id="dtBasicExample" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dtBasicExample_info" style="width: 100%;">
-            <thead>
-                <tr role="row">
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        Icon
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        Name
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        <img src="img/attr/hp.png" style="width:30px;" />
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        <img src="img/attr/armor.png" style="width:30px;" />
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        <img src="img/attr/fp.png" style="width:30px;" />
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        <img src="img/attr/torp.png" style="width:30px;" />
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        <img src="img/attr/air.png" style="width:30px;" />
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        <img src="img/attr/aa.png" style="width:30px;" />
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        <img src="img/attr/eva.png" style="width:30px;" />
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        Hit
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
-                        Luck
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">
-                        Notes
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-            <tfoot>
-                
-            </tfoot>
-        </table>    
-        
+                </tfoot>
+            </table>
+        <div id="notes" role="tablist" style="width:1000px;">
+            <a role="tab" data-toggle="collapse" data-parent="#notes" href="#collapseExample" aria-expanded="true" aria-controls="collapseExample">
+                <h5 class="mb-0">
+                    Notes <i class="fa fa-angle-down rotate-icon"></i>
+                </h5>
+            </a>
+            <div class="collapse" role="tabpanel" id="collapseExample" style="padding-top:5px;">
+                <ul>
+                    <li><b>Boss</b> enemies are enemies that must be defeated on the last wave of the boss node. For example, in 9-4 only Niizuki is the boss.</li>
+                    <li><b>Reinforcement</b> enemies are enemies that spawn along with the predefined enemies for a specific wave. Most of them keep respawning, with a time delay, as long as the wave isn't completed and no other reinforcements are alive. Typical reinforcements are suicide boats, some production ships and AA ships.</li>
+                </ul>
+            </div>
+        </div>
     </div>
+    
     <div style="padding-left:15px; font-size:11pt;">
         Found something wrong? Contact me at Samu#1741. Thank you
     </div>
