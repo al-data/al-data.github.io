@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=1000, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/js/mdb.min.js" defer></script>
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+    <script type="text/javascript" src="js/alcats.min.js"></script>
+    <script type="text/javascript" src="js/meow.min.js"></script>
+
+    <link href="css/index.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+    </script>
+</head>
+<body>
+    <div class="table-enemies">
+        <div style="width:500px; display: flex; align-items: center;">
+            <div style="margin-right:10px;">Level</div>
+            <div class="def-number-input number-input">
+                <button onclick="stepDown();" class="minus"></button>
+                <input id="inLevel" class="quantity" min="1" max="30" name="quantity" value="30" type="number">
+                <button onclick="stepUp();" class="plus"></button>
+            </div>
+        </div>
+        <table id="dtBasicExample" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dtBasicExample_info" style="width: 100%;">
+            <thead>
+                <tr role="row">
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        Icon
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        Name
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/hp.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/armor.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/fp.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/torp.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/air.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/aa.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        <img src="img/attr/eva.png" style="width:30px;" />
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        Hit
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 50px;">
+                        Luck
+                    </th>
+                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">
+                        Notes
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+
+    </div>
+</body>
+</html>
