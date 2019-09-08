@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=1200, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>Expedition</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- add after bootstrap.min.css -->
+    <link rel="stylesheet" href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" />
+
+    <!--JQuery and Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Javascript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- add after bootstrap.min.js -->
+    <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+    <script type="text/javascript" src="js/expeds.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let p = loadDb();
+            p.then(function () {
+                let url_string = window.location.href;
+                let url = new URL(url_string);
+                let c = url.searchParams.get("id");
+
+                if (c in WAVE_DB["expeds"]) {
+                    let exped = WAVE_DB["expeds"][c];
+                    loadWaves(exped);
+                    createExpedPage(exped);
+                }
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        .card:after {
+            content: "";
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+        }
+
+        .cloudy-gradient {
+            background: linear-gradient(120deg,#fdfbfb 0,#ebedee 100%);
+        }
+
+        .heavy-rain-gradient {
+            background: linear-gradient(to top,#cfd9df 0,#e2ebf0 100%);
+        }
+
+        .node {
+            transition-property: transform;
+            transition-duration: 0.2s;
+        }
+
+        .node:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .divWave {
+            padding-left: 10px;
+            padding-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .hTitle {
+            margin-bottom: 35px;
+        }
+
+        table .th-sm {
+            min-width: 75px;
+            padding: .55rem;
+            padding-left: .75rem;
+        }
+
+        .table td {
+            font-size: 1rem;
+            font-weight: 400;
+            padding: .65rem;
+        }
+
+        .table a {
+            color: black;
+        }
+
+        table.table td {
+            /*padding-top: .55rem;
+            padding-bottom: .55rem;*/
+            padding-top: .45rem;
+            padding-bottom: .45rem;
+        }
+
+        #wrapper {
+            display: flex;
+            padding-top: 00px;
+            width: 80%;
+        }
+
+        #container {
+            width: 1200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body data-spy="scroll" data-target="#toc" data-offset="180">
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img style="width:120px;" src="img/misc/logo.png" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="nodes">Nodes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="enemies">Enemies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="meowfficers">Meowfficers</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div id="container">
+
+    </div>
+
+</body>
+</html>
