@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=1000, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>Nodes</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--JQuery and Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Javascript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+    
+    <script type="text/javascript" src="js/nodes.min.js"></script>
+
+    <style type="text/css">
+        .card:after {
+            content: "";
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+        }
+
+        .cloudy-gradient {
+            background: linear-gradient(120deg,#fdfbfb 0,#ebedee 100%);
+        }
+
+        .heavy-rain-gradient {
+            background: linear-gradient(to top,#cfd9df 0,#e2ebf0 100%);
+        }
+
+        .node {
+            transition-property: transform;
+            transition-duration: 0.2s;
+        }
+
+        .node:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        table .th-sm {
+            min-width: 75px;
+            padding: .55rem;
+            padding-left: .75rem;
+        }
+
+        table.table td {
+            padding-top: .55rem;
+            padding-bottom: .55rem;
+        }
+
+        #container {
+            padding: 20px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img style="width:120px;" src="img/misc/logo.png" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="nodes">Nodes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="enemies">Enemies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="meowficers">Meowfficers</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div id="container">
+        <div class="mb-3">
+            <select id="dropMapType" class="browser-default custom-select scrollable" style="width:150px; margin-right:20px;"></select>
+            <select id="dropChapter" class="browser-default custom-select scrollable" style="width:150px;"></select> -
+            <select id="dropSubChapter" class="browser-default custom-select scrollable" style="width:150px;"></select>
+            <!-- <button id="btnSearch" type="button" class="btn btn-primary">Search</button> -->
+        </div>
+
+        <h2>Nodes</h2>
+        <div class="container d-flex flex-wrap p-2 m-0"></div>
+        <h2>Ambushes</h2>
+        <div class="ambushes d-flex flex-wrap p-2 m-0"></div>
+    </div>
+</body>
+</html>
