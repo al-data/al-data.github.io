@@ -34,6 +34,7 @@
 
                 if (c in WAVE_DB["expeds"]) {
                     let exped = WAVE_DB["expeds"][c];
+                    exped.id = c;
                     loadWaves(exped);
                     createExpedPage(exped);
                 }
