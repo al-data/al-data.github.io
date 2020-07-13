@@ -1,0 +1,205 @@
+﻿body {
+}
+
+.main-container {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+#fileLoader {
+    display: none;
+}
+
+#spanDbDesc, #spanSelShip {
+    padding-left: 10px;
+}
+
+.ship-selector {
+    display: none;
+}
+
+.newBuildBtnDiv {
+    align-items: center;
+    align-content: center;
+    display: flex;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
+.builds-editor {
+    display: flex;
+    flex-direction: column;
+    visibility: visible;
+}
+
+.build {
+    display: flex;
+    flex-direction: row;
+    /*border: 1px solid black;*/
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.gear-slot {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 3px 0 #444;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.ship-icon, .gear-entry {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 3px 0 #444;
+    border-radius: 10px;
+    min-width: 80px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.ship-icon img {
+    height: 90%;
+}
+
+.gear-entry img {
+    height: 90%;
+}
+
+.gear-slot img {
+    height: 90%;
+}
+
+.rarity-none {
+    background-color: #aaaaaa;
+    background-size: contain;
+}
+
+.rarity-gray {
+    background-image: url("../img/bgs/common.png");
+    background-size: contain;
+}
+
+.rarity-blue {
+    background-image: url("../img/bgs/rare.png");
+    background-size: contain;
+}
+
+.rarity-purple {
+    background-image: url("../img/bgs/sr.png");
+    background-size: contain;
+}
+
+.rarity-gold {
+    background-image: url("../img/bgs/ssr.png");
+    background-size: contain;
+}
+
+.rarity-rainbow {
+    background-image: url("../img/bgs/ur.png");
+    background-size: contain;
+}
+
+.stars {
+    position: absolute;
+    bottom: 0px;
+}
+
+.stars img {
+    width: 100%;
+}
+
+#shipList, #dropList {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: auto;
+    height: 480px;
+    max-height: 280px;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+}
+
+#shipList::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+#shipList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+#shipList::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+#shipList::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 10px;
+}
+
+#dropList::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+#dropList::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Handle */
+#dropList::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+#dropList::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 10px;
+}
+
+#resSelGroup {
+    display:flex;
+    align-content: center;
+}
+
+.selected-ship, #shipSelGroup {
+    display: flex;
+    align-items: center;
+}
+
+.selected-ship {
+    margin-left: 15px;
+}
+
+
+.commonDiv {
+    margin-bottom: 20px;
+}
+
+.bonusDiv {
+    margin-bottom: 20px;
+}
