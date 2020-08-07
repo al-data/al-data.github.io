@@ -10,7 +10,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -20,7 +20,7 @@
     <!-- MDBootstrap Datatables  -->
     <script type="text/javascript" src="js/addons/datatables.min.js"></script>
 
-    <script type="text/javascript" src="js/res.js"></script>
+    <script type="text/javascript" src="js/res-min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -30,77 +30,7 @@
 
     <link href="css/research.css" rel="stylesheet" />
 
-    <style type="text/css">
-        #container {
-            width: 1100px;
-            margin: 30px;
-            margin-top: 15px;
-        }
-
-        #dtBasicExample td {
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .gear-slot {
-            width: 60px;
-            height: 60px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-            border-radius: 0;
-        }
-
-        .gear-slot img {
-            height: 100%;
-        }
-
-        .table td, .table th {
-            padding: .50rem;
-        }
-
-        .count {
-            width: auto;
-            height: 20px;
-            min-width: 20px;
-            padding-left: 2px;
-            padding-right: 2px;
-            vertical-align: middle;
-            font-size: 11pt;
-            border-radius: 2px;
-            background-color: #585858; /*#d4d0d0;*/
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            border: 1px solid #757575;
-            /* line-height: 20px; */
-            font-family: monospace;
-            color: white;
-        }
-
-        .bonus {
-            background: url(img/misc/BOUNS.png);
-            width: 62px;
-            height: 65px;
-            z-index: 1;
-            position: absolute;
-            background-size: contain;
-            background-repeat: no-repeat;
-            top: -4px;
-        }
-
-        header {
-            min-width: 1300px;
-        }
-
-        .navbar {
-            justify-content: normal;
-        }
-
-        table.dataTable thead .sorting:after, table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc_disabled:after, table.dataTable thead .sorting_desc_disabled:before {
-            bottom: 0.5rem;
-        }
-
-    </style>
+    
 </head>
 <body>
     <header>
@@ -126,28 +56,115 @@
         </nav>
     </header>
 
-    <div id="container">
-        <table id="dtBasicExample" class="table table-striped table-bordered dataTable" cellspacing="0" width="100%" role="grid" aria-describedby="dtBasicExample_info" style="width: 100%;">
-            <thead>
-                <tr role="row">
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="">
-                        
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="">
-                        Name
-                    </th>
-                    <th class="th-sm sorting" tabindex="0" aria-controls="dtBasicExample" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="">
-                        Drops
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-            <tfoot>
-
-            </tfoot>
-        </table>
+    <!-- Drop select modal  -->
+    <div class="modal fade" id="poolViewer" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="poolViewerTitle">Drop List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="dropList"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="modal fade" id="poolInfoTblAbout" tabindex="-1" role="dialog" aria-labelledby="poolInfoTblAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pool Info Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="about-cols">
+                        <li><strong>Total</strong> : <u>Total</u> number of items obtained from this pool through this research. Includes bonuses.</li>
+                        <li><strong>Bonus</strong> : Amount obtained by bonus through this research.</li>
+                        <li><strong>Avg. Drop</strong> : Average number of drops from this pool per research completion.</li>
+                        <li><strong>Drop/Hour</strong> : Average number of drops per hour.</li>
+                        <li><strong>Min</strong> : Minimum number of drops from this pool in a single research completion.</li>
+                        <li><strong>Max</strong> : Maximum number of drops from this pool in a single research completion.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dropTblAbout" tabindex="-1" role="dialog" aria-labelledby="dropTblAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Drop Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="about-cols">
+                        <li><strong>Total</strong> : <u>Total</u> number of copies of this item obtained through this research. Includes bonuses.</li>
+                        <li><strong>Bonus</strong> : Amount obtained by bonus.</li>
+                        <li><strong>Drop Rate</strong> : This is the chance that <u>at least one</u> copy of this item is within the rewards of a single completion of this research. For example, a 2h30m focused will have 100% drop chance of the focused ship's print. Check <strong>Avg. Drop</strong> and <strong>Drop/Hour</strong> for the stats that account for multiple drops of the same item.</li>
+                        <li><strong>Avg. Drop</strong> : Average number of drops of this item per research completion.</li>
+                        <li><strong>Drop/Hour</strong> : Average number of drops of this item per hour.</li>
+                        <li><strong>Min</strong> : Minimum number of drops in a single research completion.</li>
+                        <li><strong>Max</strong> : Maximum number of drops in a single research completion.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resTblAbout" tabindex="-1" role="dialog" aria-labelledby="resTblAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Research Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="about-cols">
+                        <li><strong>Num Res</strong> : Number of researches of this type that were completed.</li>
+                        <li><strong>Total</strong> : Total amount of copies of this item obtained through the research. Includes bonus.</li>
+                        <li><strong>Bonus</strong> : Amount of copies that were obtained through bonus.</li>
+                        <li><strong>Drop Rate</strong> : This is the chance that <u>at least one</u> copy of this item is within the rewards of a single completion of this research. For example, a 2h30m focused will have 100% drop chance of the focused ship's print. Check <strong>Avg. Drop</strong> and <strong>Drop/Hour</strong> for the stats that account for multiple drops of the same item.</li>
+                        <li><strong>Avg. Drop</strong> : Average number of drops of this item per research completion.</li>
+                        <li><strong>Drop/Hour</strong> : Average number of drops of this item per hour.</li>
+                        <li><strong>Max</strong> : Maximum number of drops of this item in a single research completion.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pageAbout" tabindex="-1" role="dialog" aria-labelledby="pageAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">About this page</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:25px; text-align: justify;">
+                    <p>This page contains research data collected by players and should be treated as such. I make no guarantees about the drop rates and care should be taken when looking up data with low amount of samples.</p>
+                    <p>The data collection involves a fairly small group of players and some contributed every research they did so far. Special thanks to everyone collaborating.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="container"></div>
 </body>
 </html>
