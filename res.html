@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Dataset</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+    <script type="text/javascript" src="js/res-min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+    </script>
+
+    <link href="css/research.css" rel="stylesheet" />
+
+    
+</head>
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img style="width:120px;" src="img/misc/logo.png" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="nodes">Nodes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="enemies">Enemies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="meowficers">Meowfficers</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Drop select modal  -->
+    <div class="modal fade" id="poolViewer" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="poolViewerTitle">Drop List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="dropList"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="poolInfoTblAbout" tabindex="-1" role="dialog" aria-labelledby="poolInfoTblAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pool Info Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="about-cols">
+                        <li><strong>Total</strong> : <u>Total</u> number of items obtained from this pool through this research. Includes bonuses.</li>
+                        <li><strong>Bonus</strong> : Amount obtained by bonus through this research.</li>
+                        <li><strong>Avg. Drop</strong> : Average number of drops from this pool per research completion.</li>
+                        <li><strong>Drop/Hour</strong> : Average number of drops per hour.</li>
+                        <li><strong>Min</strong> : Minimum number of drops from this pool in a single research completion.</li>
+                        <li><strong>Max</strong> : Maximum number of drops from this pool in a single research completion.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="dropTblAbout" tabindex="-1" role="dialog" aria-labelledby="dropTblAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Drop Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="about-cols">
+                        <li><strong>Total</strong> : <u>Total</u> number of copies of this item obtained through this research. Includes bonuses.</li>
+                        <li><strong>Bonus</strong> : Amount obtained by bonus.</li>
+                        <li><strong>Drop Rate</strong> : This is the chance that <u>at least one</u> copy of this item is within the rewards of a single completion of this research. For example, a 2h30m focused will have 100% drop chance of the focused ship's print. Check <strong>Avg. Drop</strong> and <strong>Drop/Hour</strong> for the stats that account for multiple drops of the same item.</li>
+                        <li><strong>Avg. Drop</strong> : Average number of drops of this item per research completion.</li>
+                        <li><strong>Drop/Hour</strong> : Average number of drops of this item per hour.</li>
+                        <li><strong>Min</strong> : Minimum number of drops in a single research completion.</li>
+                        <li><strong>Max</strong> : Maximum number of drops in a single research completion.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="resTblAbout" tabindex="-1" role="dialog" aria-labelledby="resTblAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Research Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="about-cols">
+                        <li><strong>Num Res</strong> : Number of researches of this type that were completed.</li>
+                        <li><strong>Total</strong> : Total amount of copies of this item obtained through the research. Includes bonus.</li>
+                        <li><strong>Bonus</strong> : Amount of copies that were obtained through bonus.</li>
+                        <li><strong>Drop Rate</strong> : This is the chance that <u>at least one</u> copy of this item is within the rewards of a single completion of this research. For example, a 2h30m focused will have 100% drop chance of the focused ship's print. Check <strong>Avg. Drop</strong> and <strong>Drop/Hour</strong> for the stats that account for multiple drops of the same item.</li>
+                        <li><strong>Avg. Drop</strong> : Average number of drops of this item per research completion.</li>
+                        <li><strong>Drop/Hour</strong> : Average number of drops of this item per hour.</li>
+                        <li><strong>Max</strong> : Maximum number of drops of this item in a single research completion.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="pageAbout" tabindex="-1" role="dialog" aria-labelledby="pageAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">About this page</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="padding:25px; text-align: justify;">
+                    <p>This page contains research data collected by players and should be treated as such. I make no guarantees about the drop rates and care should be taken when looking up data with low amount of samples.</p>
+                    <p>The data collection involves a fairly small group of players and some contributed every research they did so far. Special thanks to everyone collaborating.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="container"></div>
+</body>
+</html>
