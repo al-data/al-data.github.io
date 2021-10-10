@@ -1,0 +1,175 @@
+﻿.group-header {
+    font-weight:600;
+    /*padding-left: 20px;
+    padding-right: 20px;*/
+}
+
+.group-val {
+    background-color: white;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+}
+
+.setting {
+    flex-direction: column;
+    background-color: #e2e3e5;
+    border-radius: 10px;
+    padding: 20px;
+    width: 970px;
+    padding-left: 20px;
+}
+
+.setting-row {
+    flex-flow: wrap;
+    margin-bottom: 10px;
+}
+
+.setting-group {
+    width: auto;
+    height: 40px;
+}
+
+.ship-icon, .gear-entry {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 3px 0 #444;
+    border-radius: 10px;
+    min-width: 80px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(to top,#cfd9df 0,#e2ebf0 100%);
+}
+
+.ship-icon img {
+    height: 90%;
+}
+
+.cat-icon {
+    width: 85px;
+    height: 85px;
+}
+
+.cat-icon:first-child {
+    margin-left: 15px;
+}
+
+.cat-icon img {
+    width: 100%;
+}
+
+.setting-icon {
+    width: 65px;
+    height: 65px;
+    border: 1px solid #eee;
+    margin-right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 3px 0 #444;
+    border-radius: 10px;
+    min-width: 65px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(to top,#cfd9df 0,#e2ebf0 100%);
+}
+
+.setting-icon img {
+    width: 90%;
+}
+
+.rarity-none {
+    background-color: #aaaaaa;
+    background-size: contain;
+}
+
+.rarity-gray {
+    background-image: url("../img/gear-rarity/common.png");
+    background-size: contain;
+}
+
+.rarity-blue {
+    background-image: url("../img/gear-rarity/rare.png");
+    background-size: contain;
+}
+
+.rarity-purple {
+    background-image: url("../img/gear-rarity/sr.png");
+    background-size: contain;
+}
+
+.rarity-gold {
+    background-image: url("../img/gear-rarity/ssr.png");
+    background-size: contain;
+}
+
+.rarity-rainbow {
+    background-image: url("../img/gear-rarity/ur.png");
+    background-size: contain;
+}
+
+
+
+table .tbl-ship-img {
+    padding: 0;
+    vertical-align: middle;
+}
+
+
+.about-cols li {
+    margin-bottom: 5px;
+}
+
+
+.ship-select-entry {
+    width: 160px;
+    border:1px solid gray;
+    margin-right: 5px;
+
+    opacity:0.5;
+
+    cursor: pointer;
+}
+
+.ship-selected {
+    border: 1px solid gray;
+    opacity: 1;
+}
+
+
+
+.stat-input-header {
+    padding-top:0;
+    padding-bottom:0;
+    padding-left: 0.75rem;
+    padding-right:0.75rem;
+}
+
+
+
+
+
+table .th-sm {
+    min-width: 75px;
+    padding: .55rem;
+    padding-left: .75rem;
+}
+
+/*table.table td {
+    padding-top: .55rem;
+    padding-bottom: .55rem;
+}*/
+
+.navbar {
+    justify-content: normal;
+}
+
+header {
+    min-width: 1100px;
+}

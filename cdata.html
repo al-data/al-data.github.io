@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=800, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>Combat Data</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous">
+
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--<link href="css/dark/dark.css" rel="stylesheet">-->
+    <!--JQuery and Popper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap Javascript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+    <script type="text/javascript" src="js/cdata.min.js"></script>
+    <link href="css/log.css" rel="stylesheet">
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+            src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <style type="text/css">
+        .card:after {
+            content: "";
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+        }
+
+        .cloudy-gradient {
+            background: linear-gradient(120deg,#fdfbfb 0,#ebedee 100%);
+        }
+
+        .heavy-rain-gradient {
+            background: linear-gradient(to top,#cfd9df 0,#e2ebf0 100%);
+        }
+
+        .node {
+            transition-property: transform;
+            transition-duration: 0.2s;
+        }
+
+        .node:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        #container {
+            min-width: 1050px;
+            padding: 25px;
+        }
+
+        .titlehr {
+            border-top: 1px solid gray;
+            margin-top: 0;
+        }
+
+        .ship-icon, .gear-entry {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #eee;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 3px 0 #444;
+            border-radius: 10px;
+            min-width: 80px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .ship-icon img {
+            height: 90%;
+        }
+
+        .container {
+            margin: 0;
+        }
+
+        .section-space {
+            margin-top: 25px;
+        }
+
+        table th {
+            font-weight: 600;
+        }
+
+        .tooltip {
+            width: 400px;
+        }
+
+        .tooltip .show {
+            opacity: 1.0 !important;
+        }
+
+        th.sorting_desc::after, th.sorting_asc::after, th.sorting::after {
+            bottom: .5em !important;
+        }
+
+        th.sorting_desc::before, th.sorting_asc::before, th.sorting::before {
+            bottom: .5em !important;
+        }
+
+        .table th {
+            padding: .55rem;
+        }
+
+        .wname {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 125px;
+        }
+
+        .ship-select-entry {
+            cursor: pointer;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img style="width:120px;" src="img/misc/logo.png" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="nodes">Nodes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="enemies">Enemies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="meowficers">Meowfficers</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="modal fade" id="offenseTblAbout" tabindex="-1" role="dialog" aria-labelledby="offenseTblAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Weapon Stats Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="about-cols">
+                        <li><strong>Dmg</strong> : Average damage <u>per run</u> this weapon dealt.</li>
+                        <li><strong>Dps</strong> : Weapon's dps across the runs.</li>
+                        <li><strong>Rnd</strong> : Total number of bullets created by this weapon during the runs. Total round sample size for this weapon's stats.</li>
+                        <li><strong>Hits</strong> : Number of hits to an <u>enemy's hitbox</u>. Even if the bullet misses from hit/eva rate calcs, it still counts towards this stat. If a bullet hits more than one enemy through AoE, it is counted towards this stat. Hits to shields are <strong>not</strong> counted towards this.</li>
+                        <li><strong>Hitbox%</strong> : <u>Hitbox</u> hitrate. $\frac{\text{Hits}}{\text{Rnd}}$. A value higher than 100% simply means each bullet hits more than one enemy on average.</li>
+                        <li><strong>Missed</strong> : Number of bullets that missed after accuracy check. I.e. hit the hitbox but missed due to the hit/eva rate roll.</li>
+                        <li><strong>Blocked</strong> : Number of bullets that were intercepted by physical shields.</li>
+                        <li><strong>Overkill %</strong> : Portion of damage this weapon dealt that overkilled.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="fleetTblAbout" tabindex="-1" role="dialog" aria-labelledby="fleetTblAbout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 800px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Fleet Stats Table</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="about-cols">
+                        <li><strong>Surface</strong> : Surface damage dealt by the ship. Includes ramming but does not include DoT.</li>
+                        <li><strong>AA (Game)</strong> : AA damage as attributed by the game. It picks a ship randomly for each aircraft, using the AA stat squared $\text{AntiAir}^2$ as its sampling distribution. Therefore, ships with high AA stat will have a much higher chance of being picked. When a ship is picked, it gets all damage done to the plane into their damage stats, even though it had contributions from others. Since it does not take into account efficiencies nor mounts, it's not a good general indicator of AA performance and big culprit of misleading damage screens.</li>
+                        <li><strong>AA (Real)</strong> : Real AA damage contribution that ships put into the AA ticks. It is calculated exactly, by storing the amount of damage that each ship contributes towards the total fleet AA damage, before each tick, and later scaling it by each plane's random multiplier that the game sampled. Therefore, each ship gets exactly the amount they contributed.</li>
+                        <li><strong>Aircraft AA</strong> : Damage dealt by AA guns equipped on aircraft.</li>
+                        <li><strong>DoT</strong> : Burn and flood damage.</li>
+                        <li><strong>Boss %</strong> : This ship's contribution to taking down the boss' HP, if applicable.</li>
+                        <li><strong>Overkill %</strong> : Percentage of damage that overkilled, i.e. was not used to effectively reduce an enemy's HP due to lack of HP to reduce.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="container">
+        <h3 id="title">Setting</h3>
+        <hr class="titlehr" />
+        <div id="headerCont" class="d-flex flex-wrap setting flex-row"></div>
+
+        <div class="section-space"></div>
+
+        <h3>Fleet Stats</h3>
+        <hr class="titlehr" />
+        <div id="fleetStats" class="d-flex flex-wrap p-2 m-0 flex-column" style="min-width:1050px;"> </div>
+
+        <div class="section-space"></div>
+
+        <h3>Stats by Ship</h3>
+        <hr class="titlehr" />
+        <div id="statsByShipCont" class="d-flex flex-wrap p-2 m-0" style="flex-direction:column;">
+
+            <div id="shipSelCont" class="d-flex flex-row" style="margin-bottom:20px;"></div>
+            <div id="statsHeaderCont" class="d-flex flex-wrap setting flex-row"></div>
+
+            <div class="section-space"></div>
+
+            <h4>Offense</h4>
+            <hr class="titlehr" />
+
+            <div id="dmgDealtProf" style="width:100%; margin-bottom: 40px;"></div>
+
+            <div id="enemyDrop" class="d-flex flex-row setting-row">
+                <div class="input-group mb-2 mr-sm-2 setting-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text group-header">Enemy</div>
+                    </div>
+                    <select class="custom-select setting-group" id="enemySel">
+                    </select>
+                </div>
+                <button type="button" style="height:40px;" class="btn btn-info" data-toggle="modal" data-target="#offenseTblAbout">
+                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                    About Table
+                </button>
+            </div>
+
+            <div id="weapTblCont"></div>
+
+            <div class="section-space" style="margin-bottom: 0px;"></div>
+
+            <h4>Survivability</h4>
+
+            <div id="survStats" class="d-flex flex-wrap m-0"></div>
+
+            <div id="dmgTakenProf" style="width:100%; margin-bottom: 20px;"></div>
+        </div>
+
+        <div class="section-space"></div>
+
+        <h3>Anti-Air Stats</h3>
+        <hr class="titlehr" />
+        <div id="aaStatsCont" class="d-flex flex-wrap p-2 m-0" style="max-width: 1050px;"></div>
+
+        <div class="section-space"></div>
+    </div>
+</body>
+</html>
