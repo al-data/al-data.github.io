@@ -1,9 +1,10 @@
 ﻿.table-enemies {
-    width:1200px;
+    max-width: 1200px;
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    padding:15px;
+    padding: 15px;
+    flex-direction: column;
 }
 
 table .th-sm {
@@ -13,7 +14,21 @@ table .th-sm {
 table.table td {
     padding-top: .75rem;
     padding-bottom: .75rem;
+
+    font-weight: 300;
+    font-size: 1rem;
 }
+
+table th {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+header {
+    min-width: 1300px;
+}
+
+
 
 .number-input input[type="number"] {
     -webkit-appearance: textfield;
