@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enemy</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- MDBootstrap Datatables  -->
+    <link href="css/addons/datatables.min.css" rel="stylesheet">
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+    <script type="text/javascript" src="js/en-detail.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            init();
+        });
+    </script>
+
+    <link href="css/research.css" rel="stylesheet" />
+    <link href="css/log.css" rel="stylesheet" />
+    <link href="css/enemy.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .card:after {
+            content: "";
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: absolute;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+        }
+
+        .cloudy-gradient {
+            background: linear-gradient(120deg,#fdfbfb 0,#ebedee 100%);
+        }
+
+        .heavy-rain-gradient {
+            background: linear-gradient(to top,#cfd9df 0,#e2ebf0 100%);
+        }
+
+        .node {
+            transition-property: transform;
+            transition-duration: 0.2s;
+        }
+
+        .node:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .divWave {
+            padding-left: 10px;
+            padding-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .hTitle {
+            margin-bottom: 35px;
+        }
+
+        #wrapper {
+            display: flex;
+            padding-top: 00px;
+            width: 80%;
+        }
+
+        #container {
+            width: 1000px;
+            /*padding: 20px;*/
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            min-width: 1100px;
+        }
+
+        .navbar {
+            justify-content: normal;
+        }
+
+        #dtPoolInfo td, #dtDropTbl td {
+            padding: .2rem;
+        }
+
+        #dtPoolInfo, #dtDropTbl {
+            margin-bottom: 0.75rem;
+        }
+
+        #dtPoolInfo td img {
+            width: 28px;
+        }
+
+        #dtPoolInfo {
+            font-size: 10pt;
+        }
+
+        #enemyHeader {
+            margin-bottom:25px; 
+            width:950px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img style="width:120px;" src="img/misc/logo.png" /></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="nodes">Nodes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="enemies">Enemies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="meowficers">Meowfficers</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div id="container">
+        <div id="enemyHeader" class="d-flex flex-wrap setting flex-row"></div>
+        <div id="enemyStats" style="display:flex;"></div>
+        <div id="enemyBuffs" style="display:flex; flex-direction:column; margin-bottom:20px; width:950px;"></div>
+        <div id="enemyBreakdowns" style="width:100%; display:flex; flex-direction:row"></div>
+        <div id="enemyWeapons"></div>
+        <div id="enemyAircraft"></div>
+    </div>
+</body>
+</html>

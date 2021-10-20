@@ -1,0 +1,59 @@
+﻿body {
+}
+
+.group-header-stat {
+    min-width:58px;
+    padding:0;
+    display:flex;
+    justify-content:center;
+}
+
+.group-val-stat {
+    min-width: 60px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.expedList {
+    height: 100%;
+    min-height: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.expedList a {
+    margin-right: 15px;
+}
+
+.expedList a:last-child {
+    margin-right: 0;
+}
+
+
+
+.weaponTable {
+    margin-bottom: 0.75rem;
+    font-size: 11pt; /* was 11pt */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.weaponTable td {
+    padding: .2rem;
+    font-weight: 400;
+}
+
+.weaponTable td img {
+    width: 25px; /* was 28px */
+}
+
+.weaponTable a {
+    color: black;
+}
+
+.weaponTable .th-sm {
+    min-width: 75px;
+    padding: .2rem;
+}
